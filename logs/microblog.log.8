@@ -1,0 +1,128 @@
+2019-07-01 08:47:52,484 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 09:17:34,610 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 09:18:01,188 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 09:58:29,030 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:06:33,977 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:30:47,250 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:31:21,829 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:32:49,964 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:34:34,511 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:45:31,430 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:57:27,884 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 10:57:46,589 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 10:57:50,491 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 10:58:29,721 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 11:01:51,391 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 11:02:02,070 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 11:05:38,503 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 11:06:13,432 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
+2019-07-01 11:06:19,338 ERROR: Exception on / [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
+    posts = current_user.followed_posts().paginate(
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
+2019-07-01 11:10:10,283 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]

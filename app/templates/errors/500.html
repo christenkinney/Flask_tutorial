@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('An unexpected error has occurred') }}</h1>
+    <p>{{ _('The administrator has been notified. Sorry for the inconvenience!') }}</p>
+    <p><a href="{{ url_for('index') }}">{{ _('Back') }}</a></p>
+{% endblock %}
+
+
+<!-- first version -- template is inherited from the base html page so when rendered
+	it has the same look as feel as all the other html pages -->
+
+	<!-- second version -- template is inherited from the base html page from boostrap framework so when rendered it has the same look as feel as all the other html pages -->
