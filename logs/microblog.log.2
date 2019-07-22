@@ -1,13 +1,4 @@
-2019-07-09 09:38:49,188 ERROR: Exception on /index [POST] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.InterfaceError: Error binding parameter 3 - probably unsupported type.
-
-The above exception was the direct cause of the following exception:
-
+2019-07-21 21:42:03,644 ERROR: Exception on /auth/login [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,126 +12,111 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 38, in index
-    db.session.commit()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
-    self.transaction.commit()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
-    self._prepare_impl()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
-    self._flush(objects)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
-    raise value
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
-    flush_context.execute()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
-    rec.execute(self)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
-    uow
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
-    mapper, table, insert)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 866, in _emit_insert_statements
-    execute(statement, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+  File "/Users/christenkinney/Desktop/microblog/app/auth/routes.py", line 28, in login
+    return render_template('auth/login.html', title=_('Sign In'), form=form)
+  File "/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 3 - probably unsupported type. [SQL: 'INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)'] [parameters: ('Hello! This is new', '2019-07-09 16:38:49.165391', 3, [en:0.9999973150305843])] (Background on this error at: http://sqlalche.me/e/rvf5)
-2019-07-09 09:39:34,230 ERROR: Exception on /index [POST] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/Users/christenkinney/Desktop/microblog/app/templates/auth/login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/base.html", line 57, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/auth/login.html", line 12, in block "app_content"
+    <p>{{ _('New User?') }} <a href="{{ url_for('register') }}">{{ _('Click to Register!') }}</a></p>
+  File "/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'register'. Did you mean 'auth.register' instead?
+2019-07-21 21:42:03,770 ERROR: Exception on /favicon.ico [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.InterfaceError: Error binding parameter 3 - probably unsupported type.
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1791, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1774, in raise_routing_exception
+    raise request.routing_exception
+  File "/anaconda3/lib/python3.6/site-packages/flask/ctx.py", line 336, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/routing.py", line 1581, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1713, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1644, in handle_http_exception
+    return handler(e)
+  File "/Users/christenkinney/Desktop/microblog/app/errors/handlers.py", line 14, in not_found_error
+    return render_template('errors/404.html'), 404
+  File "/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/anaconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/christenkinney/Desktop/microblog/app/templates/errors/404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/base.html", line 57, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/christenkinney/Desktop/microblog/app/templates/errors/404.html", line 5, in block "app_content"
+    <p><a href="{{ url_for('index') }}">{{ _('Back') }}</a></p>
+  File "/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
     reraise(exc_type, exc_value, tb)
   File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 38, in index
-    db.session.commit()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
-    self.transaction.commit()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
-    self._prepare_impl()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
-    self._flush(objects)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
-    raise value
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
-    flush_context.execute()
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
-    rec.execute(self)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
-    uow
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
-    mapper, table, insert)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 866, in _emit_insert_statements
-    execute(statement, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
-    raise value.with_traceback(tb)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 3 - probably unsupported type. [SQL: 'INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)'] [parameters: ('Hola', '2019-07-09 16:39:34.230011', 3, [tr:0.9999956303625644])] (Background on this error at: http://sqlalche.me/e/rvf5)
-2019-07-09 18:25:44,626 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-09 18:39:01,328 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
+  File "/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/anaconda3/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2019-07-21 21:44:35,949 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]

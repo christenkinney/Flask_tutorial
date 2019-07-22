@@ -1,4 +1,13 @@
-2019-07-01 11:18:40,505 ERROR: Exception on / [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2019-07-09 09:38:49,188 ERROR: Exception on /index [POST] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.InterfaceError: Error binding parameter 3 - probably unsupported type.
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,12 +21,65 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
-    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
-  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
-2019-07-01 11:18:42,914 ERROR: Exception on /index [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 38, in index
+    db.session.commit()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 866, in _emit_insert_statements
+    execute(statement, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 3 - probably unsupported type. [SQL: 'INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)'] [parameters: ('Hello! This is new', '2019-07-09 16:38:49.165391', 3, [en:0.9999973150305843])] (Background on this error at: http://sqlalche.me/e/rvf5)
+2019-07-09 09:39:34,230 ERROR: Exception on /index [POST] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.InterfaceError: Error binding parameter 3 - probably unsupported type.
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -31,55 +93,54 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
-    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
-  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
-2019-07-01 11:26:00,566 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 11:26:09,517 ERROR: Exception on / [GET] [in /anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+  File "/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 38, in index
+    db.session.commit()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
     raise value
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/christenkinney/Desktop/microblog/app/routes.py", line 35, in index
-    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
-  File "/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
-2019-07-01 11:27:53,557 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 12:50:44,253 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 12:52:30,167 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 12:53:17,457 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 12:59:19,490 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 12:59:50,679 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:05:29,101 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:06:27,836 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:07:55,616 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:10:10,298 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:13:45,493 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:15:26,941 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 13:41:39,576 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:56]
-2019-07-01 14:04:53,878 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:58]
-2019-07-01 14:47:07,802 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:59]
-2019-07-08 07:33:17,475 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:59]
-2019-07-08 08:29:15,965 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:61]
-2019-07-08 09:16:42,935 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:63]
-2019-07-08 11:26:55,464 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-08 11:39:53,399 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-08 11:41:35,436 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-08 12:22:17,111 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-08 12:22:33,401 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-09 09:03:29,795 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-09 09:05:02,834 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-09 09:05:02,834 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
-2019-07-09 09:32:47,649 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 866, in _emit_insert_statements
+    execute(statement, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 3 - probably unsupported type. [SQL: 'INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)'] [parameters: ('Hola', '2019-07-09 16:39:34.230011', 3, [tr:0.9999956303625644])] (Background on this error at: http://sqlalche.me/e/rvf5)
+2019-07-09 18:25:44,626 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
+2019-07-09 18:39:01,328 INFO: Microblog startup [in /Users/christenkinney/Desktop/microblog/app/__init__.py:77]
