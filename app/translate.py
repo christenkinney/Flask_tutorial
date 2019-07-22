@@ -1,7 +1,7 @@
 import json
 import requests
 from flask_babel import _
-from app import app
+from app import current_app
 
 #translate functions takes the text to translate and the source and destination
 #language codes as arguments

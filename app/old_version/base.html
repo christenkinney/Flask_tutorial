@@ -22,9 +22,11 @@
                     <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
                 </ul>
                 {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                <form class="navbar-form navbar-left" method="get"
+                        action="{{ url_for('main.search') }}">
                     <div class="form-group">
-                        {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                        {{ g.search_form.q(size=20, class='form-control',
+                            placeholder=g.search_form.q.label.text) }}
                     </div>
                 </form>
                 {% endif %}
@@ -57,16 +59,25 @@
 {% endblock %}
 
 {% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
-    <script>
+<!-- add another block that exports flask-bootstrap base template, this is where JS imports are then included. Adding the moment.js library using the super() statement
+- this preserves the content from base template without losing it! -->
+  {{ super() }}
+  {{ moment.include_moment() }}
+  {{ moment.lang(g.locale) }}
+
+<script>
+        //first two arguments are the unique IDs for the post and translate link nodes. 
+        //Last two arguments are the source and destination language codes
         function translate(sourceElem, destElem, sourceLang, destLang) {
+            //while the translation is in process
             $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            //send post request to API -- submit data to server in the format of request form dictionary
+            //need the URL and the dictionary with the data to be sent over 
             $.post('/translate', {
                 text: $(sourceElem).text(),
                 source_language: sourceLang,
                 dest_language: destLang
+            //a callback function that the browser will invoke when response is received 
             }).done(function(response) {
                 $(destElem).text(response['text'])
             }).fail(function() {

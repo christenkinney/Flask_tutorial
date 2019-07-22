@@ -9,7 +9,7 @@ from app.errors import bp
 #making the blueprint independent of the application so that it is
 #more portable 
 #changing the path to indicate errors sub directory
-@bd.app_errorhandler(404)
+@bp.app_errorhandler(404)
 def not_found_error(error):
     return render_template('errors/404.html'), 404
 
@@ -19,7 +19,7 @@ def not_found_error(error):
 #any db session failures do not interfere with
 #db aceesess, so issue a rollback which resets the
 #session to a clean slate
-@bd.app_errorhandler(500)
+@bp.app_errorhandler(500)
 def internal_error(error):
     db.session.rollback()
     return render_template('errors/500.html'), 500
